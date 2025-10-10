@@ -102,39 +102,52 @@ body {
 /* Navigation */
 .navbar {
   background-color: var(--color-black);
-  padding: var(--spacing-md) 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0; /* altura da barra */
   position: fixed;
   top: 8px;
   left: 0;
   right: 0;
   z-index: 1000;
-  border-bottom: 2px solid var(--color-yellow);
+  border-bottom: 4px solid #000; /* faixa de segurança */
   transition: var(--transition);
 }
 
 .navbar.scrolled {
-  background-color: rgba(0, 0, 0, 0.95);
-  box-shadow: 0 4px 20px rgba(255, 212, 0, 0.1);
+  /* Keep navbar black at all times (no color change on scroll) */
+  background-color: var(--color-black);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
 .nav-content {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1200px;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
   text-decoration: none;
-  color: var(--color-white);
-  font-size: 1.25rem;
-  font-weight: 700;
+  /* larger left nudge so logo+text shift more towards the left edge */
+  margin-left: -16px;
 }
 
 .logo-icon {
-  font-size: 1.5rem;
+  height: 48px; /* Tamanho proporcional maior */
+  width: auto !important;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.logo-text {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--color-yellow);
 }
 
 .mobile-menu-btn {
@@ -816,7 +829,7 @@ body {
 .back-to-top {
   position: fixed;
   bottom: var(--spacing-lg);
-  right: var(--spacing-lg);
+  right: var(--spacing-lg); /* moved back to right side */
   width: 50px;
   height: 50px;
   background-color: var(--color-yellow);
@@ -926,5 +939,13 @@ body {
 
   .stat-number {
     font-size: 2rem;
+  }
+}
+
+/* On very small screens undo the left nudge so menu alignment stays correct */
+@media (max-width: 640px) {
+  .logo {
+    margin-left: 0;
+    transform: none;
   }
 }

@@ -928,3 +928,9 @@ body {
     font-size: 2rem;
   }
 }
+.logo-icon {
+  height: 50px;
+  width: auto;
+  margin-right: 10px;
+  vertical-align: middle;
+}

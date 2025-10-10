@@ -8,17 +8,18 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-   Safety Stripe Header 
+   <!-- Safety Stripe Header -->
   <div class="safety-stripe-header"></div>
 
-   Navigation 
+   <!-- Navigation -->
   <nav class="navbar" id="navbar">
     <div class="container">
       <div class="nav-content">
-        <a href="#" class="logo">
-          <span class="logo-icon">🛡️</span>
-          <span class="logo-text">Evolução Consultoria</span>
-        </a>
+<a href="#" class="logo">
+  <img src="assets/images/logo.png" alt="Logo da Evolução Consultoria" class="logo-icon">
+  <span class="logo-text">Evolução Consultoria</span>
+</a>
+
         
         <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
           <span></span>
@@ -38,7 +39,7 @@
     </div>
   </nav>
 
-   Hero Carousel 
+   <!-- Hero Carousel -->
   <section class="hero-carousel" id="inicio">
     <div class="carousel-container">
       <div class="carousel-slide active">
@@ -82,10 +83,10 @@
     </div>
   </section>
 
-   Section Divider 
+   <!-- Section Divider -->
   <div class="section-divider"></div>
 
-   Company Section 
+   <!-- Company Section -->
   <section class="section" id="empresa">
     <div class="container">
       <div class="section-header">
@@ -122,10 +123,10 @@
     </div>
   </section>
 
-   Section Divider 
+   <!-- Section Divider -->
   <div class="section-divider"></div>
 
-   Benefits Section 
+   <!-- Benefits Section -->
   <section class="section section-dark" id="beneficios">
     <div class="container">
       <div class="section-header">
@@ -189,10 +190,10 @@
     </div>
   </section>
 
-   Section Divider 
+   <!-- Section Divider -->
   <div class="section-divider"></div>
 
-   Training Section 
+   <!-- Training Section -->
   <section class="section" id="treinamentos">
     <div class="container">
       <div class="section-header">
@@ -237,7 +238,7 @@
         </div>
       </div>
 
-       Construction Training 
+       <!-- Construction Training -->
       <div class="training-category">
         <h3 class="training-category-title">Treinamentos para Construção Civil</h3>
         <div class="training-grid">
@@ -254,7 +255,7 @@
         </div>
       </div>
 
-       First Aid Training 
+       <!-- First Aid Training -->
       <div class="training-category">
         <h3 class="training-category-title">Primeiros Socorros</h3>
         <div class="training-grid">
@@ -273,10 +274,10 @@
     </div>
   </section>
 
-   Section Divider 
+   <!-- Section Divider -->
   <div class="section-divider"></div>
 
-   Clients Section 
+   <!-- Clients Section -->
   <section class="section section-dark" id="clientes">
     <div class="container">
       <div class="section-header">
@@ -295,10 +296,10 @@
     </div>
   </section>
 
-   Section Divider 
+   <!-- Section Divider -->
   <div class="section-divider"></div>
 
-   Instructors Section 
+   <!-- Instructors Section -->
   <section class="section" id="instrutores">
     <div class="container">
       <div class="section-header">
@@ -332,10 +333,10 @@
     </div>
   </section>
 
-   Section Divider 
+   <!-- Section Divider -->
   <div class="section-divider"></div>
 
-   Contact Section 
+   <!-- Contact Section -->
   <section class="section section-dark" id="contato">
     <div class="container">
       <div class="section-header">
@@ -401,7 +402,7 @@
     </div>
   </section>
 
-   Footer 
+   <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
@@ -439,8 +440,76 @@
     </div>
   </footer>
 
-   Back to Top Button 
+  <!-- Back to Top Button -->
   <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">↑</button>
+
+  <!-- Chat button and popup (added as requested) -->
+  <div id="chatButton" class="chat-button">💬</div>
+  <div id="chatPopup" class="chat-popup" aria-hidden="true">
+    <div class="chat-header">
+      <h4>Assistente Virtual</h4>
+      <span id="closeChat">&times;</span>
+    </div>
+    <div id="chatBody" class="chat-body"></div>
+    <div class="chat-input-area chat-input" style="display: none;">
+      <input id="userInput" type="text" placeholder="Digite sua mensagem..." />
+      <button id="sendBtn">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    // Minimal chat button behavior (kept local and isolated)
+    (function(){
+      const chatButton = document.getElementById('chatButton');
+      const chatPopup = document.getElementById('chatPopup');
+      const closeChat = document.getElementById('closeChat');
+      const sendBtn = document.getElementById('sendBtn');
+      const chatBody = document.getElementById('chatBody');
+      const userInput = document.getElementById('userInput');
+      const inputArea = document.querySelector('.chat-input-area');
+      let stage = 0;
+
+      function createMessage(text, sender = 'bot'){
+        const msg = document.createElement('div');
+        msg.className = 'message ' + sender;
+        msg.textContent = text;
+        chatBody.appendChild(msg);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }
+
+      chatButton.addEventListener('click', ()=>{
+        chatPopup.style.display = 'flex';
+        chatButton.style.display = 'none';
+        inputArea.style.display = 'none';
+        if(stage === 0){
+          setTimeout(()=> createMessage('Olá! Tudo bem?'), 500);
+          setTimeout(()=> createMessage('Bem-vindo ao nosso atendimento virtual!'), 1500);
+          setTimeout(()=>{ createMessage('Antes de começarmos, qual é o seu nome?'); stage = 1; inputArea.style.display = 'flex'; }, 2500);
+        }
+      });
+
+      closeChat.addEventListener('click', ()=>{
+        chatPopup.style.display = 'none';
+        chatButton.style.display = 'flex';
+      });
+
+      sendBtn.addEventListener('click', ()=>{
+        const text = userInput.value.trim();
+        if(!text) return;
+        createMessage(text, 'user');
+        userInput.value = '';
+        inputArea.style.display = 'none';
+        if(stage === 1){
+          setTimeout(()=>{ createMessage('Prazer em te conhecer, ' + text + '!'); setTimeout(()=> createMessage('Como posso te ajudar hoje?'), 1000); }, 800);
+          stage = 2;
+        } else if(stage === 2){
+          setTimeout(()=> createMessage('Entendi! Me conte mais sobre isso.'), 800);
+        }
+      });
+
+      userInput.addEventListener('keypress', (e)=>{ if(e.key === 'Enter') sendBtn.click(); });
+    })();
+  </script>
 
   <script src="script.js"></script>
 </body>
