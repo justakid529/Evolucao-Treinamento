@@ -1,72 +1,210 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap Carousel</title>
-    <!-- Fixed CSS path -->
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-   <link rel="stylesheet" href="./assets/css/stylesheet.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evolução Consultoria e Treinamentos - Segurança do Trabalho</title>
+  <meta name="description" content="Treinamentos em segurança do trabalho e NRs. Conhecimento que salva vidas.">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-dark text-white ">
-      <div class="container">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menu">
-          <span class="navbar-toggler-icon"></span>
+   <!-- Safety Stripe Header -->
+  <div class="safety-stripe-header"></div>
+
+   <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="nav-content">
+        <div class="logo">
+<a href="index.html" class="logo" >
+  <img src="assets/images/logo.png" alt="Logo da Evolução Consultoria" class="logo-icon">
+  <span class="logo-text" style="color: white;">Evolução Consultoria</span>
+</a>
+</div>
+
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link not-dropdown" href="./pages/Serviços.html">Ferramentas</a>
+
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#inicio" class="nav-link">Início</a></li>
+          <li><a href="#empresa" class="nav-link">Empresa</a></li>
+          <li><a href="#beneficios" class="nav-link">Benefícios</a></li>
+          <li><a href="#treinamentos" class="nav-link">Treinamentos</a></li>
+          <li><a href="#instrutores" class="nav-link">Instrutores</a></li>
+          <li><a href="#contato" class="nav-link">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+   <!-- Hero Carousel -->
+  <section class="hero-carousel" id="inicio">
+    <div class="carousel-container">
+      <div class="carousel-slide active">
+        <div class="carousel-overlay"></div>
+        <div class="carousel-content">
+          <div class="safety-stripe-accent"></div>
+          <h1 class="carousel-title">Conhecimento que Salva Vidas</h1>
+          <p class="carousel-subtitle">Treinamentos especializados em segurança do trabalho desde 2019</p>
+          <a href="#contato" class="btn-primary">Solicite um Orçamento</a>
+        </div>
+      </div>
+      
+      <div class="carousel-slide">
+        <div class="carousel-overlay"></div>
+        <div class="carousel-content">
+          <div class="safety-stripe-accent"></div>
+          <h1 class="carousel-title">Treinamentos Certificados</h1>
+          <p class="carousel-subtitle">Conformidade com todas as Normas Regulamentadoras</p>
+          <a href="#treinamentos" class="btn-primary">Conheça Nossos Cursos</a>
+        </div>
+      </div>
+      
+      <div class="carousel-slide">
+        <div class="carousel-overlay"></div>
+        <div class="carousel-content">
+          
+          <img src="./assets/images/la.jpg" alt="" style="scale: 4;">
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="Anterior">‹</button>
+    <button class="carousel-btn carousel-next" id="carouselNext" aria-label="Próximo">›</button>
+    
+    <div class="carousel-indicators" id="carouselIndicators">
+      <button class="indicator active" data-slide="0"></button>
+      <button class="indicator" data-slide="1"></button>
+      <button class="indicator" data-slide="2"></button>
+    </div>
+  </section>
+
+   <!-- Section Divider -->
+  <div class="section-divider"></div>
+
+   <!-- Company Section -->
+  <section class="section" id="empresa">
+    <div class="container">
+      <div class="section-header">
+        <div class="safety-stripe-badge"></div>
+        <h2 class="section-title">Sobre a Evolução Consultoria</h2>
+      </div>
+      
+      <div class="company-content">
+        <div class="company-text">
+          <p class="lead-text">
+            Fundada em 2019, a Evolução Consultoria e Treinamentos é especializada em treinamentos de segurança do trabalho, 
+            oferecendo cursos certificados que atendem às Normas Regulamentadoras (NRs) do Ministério do Trabalho.
+          </p>
+          <p>
+            Nossa missão é promover ambientes de trabalho mais seguros através de treinamentos de alta qualidade, 
+            capacitando profissionais e empresas a prevenir acidentes e garantir a conformidade legal.
+          </p>
+          <div class="company-stats">
+            <div class="stat-card">
+              <div class="stat-number">5+</div>
+              <div class="stat-label">Anos de Experiência</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">20+</div>
+              <div class="stat-label">Cursos Oferecidos</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Certificados</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <!-- Section Divider -->
+  <div class="section-divider"></div>
+
+   <!-- Benefits Section -->
+  <section class="section section-dark" id="beneficios">
+    <div class="container">
+      <div class="section-header">
+        <div class="safety-stripe-badge"></div>
+        <h2 class="section-title">Benefícios dos Treinamentos</h2>
+      </div>
+
+      <div class="benefits-grid">
+        <div class="benefit-category">
+          <h3 class="benefit-category-title">Para Empregadores</h3>
+          <ul class="benefit-list">
+            <li class="benefit-item">
+              <span class="benefit-icon">✓</span>
+              <span>Conformidade legal com as NRs</span>
+            </li>
+            <li class="benefit-item">
+              <span class="benefit-icon">✓</span>
+              <span>Redução de acidentes e afastamentos</span>
+            </li>
+            <li class="benefit-item">
+              <span class="benefit-icon">✓</span>
+              <span>Diminuição de custos com indenizações</span>
+            </li>
+            <li class="benefit-item">
+              <span class="benefit-icon">✓</span>
+              <span>Melhoria da imagem corporativa</span>
+            </li>
+            <li class="benefit-item">
+              <span class="benefit-icon">✓</span>
+              <span>Aumento da produtividade</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="benefit-category">
+          <h3 class="benefit-category-title">Para Empregados</h3>
+          <ul class="benefit-list">
+            <li class="benefit-item">
+              <span class="benefit-icon">✓</span>
+              <span>Conhecimento sobre riscos no trabalho</span>
+            </li>
+            <li class="benefit-item">
+              <span class="benefit-icon">✓</span>
+              <span>Capacitação em prevenção de acidentes</span>
+            </li>
+            <li class="benefit-item">
+              <span class="benefit-icon">✓</span>
+              <span>Uso correto de EPIs</span>
+            </li>
+            <li class="benefit-item">
+              <span class="benefit-icon">✓</span>
+              <span>Maior segurança no ambiente de trabalho</span>
+            </li>
+            <li class="benefit-item">
+              <span class="benefit-icon">✓</span>
+              <span>Valorização profissional</span>
             </li>
           </ul>
         </div>
       </div>
-    </nav>
-  </header>
-    
-
-    <!-- Carousel -->
-<div id="demo" class="carousel slide" data-bs-ride="carousel">
-
-  <!-- Indicators/dots -->
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-  </div>
-  
-  <!-- The slideshow/carousel -->
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="./assets/images/la.jpg" alt="Los Angeles" class="d-block" style="width:100%">
     </div>
-    <div class="carousel-item">
-      <img src="./assets/images/la1.jpeg" alt="Chicago" class="d-block" style="width:100%">
-    </div>
-    <div class="carousel-item">
-      <img src="./assets/images/los-angeles.png" alt="New York" class="d-block" style="width:100%">
-    </div>
-  </div>
-  
-  <!-- Left and right controls/icons -->
-  <button class="carousel-control-prev primary" type="button" data-bs-target="#demo" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </button>
-</div>
+  </section>
 
-<section class="services-section">
-  <h2 class="section-title">Serviços que oferecemos</h2><br>
-  <h2 class="section-title2">Industria</h2>
+   <!-- Section Divider -->
+  <div class="section-divider"></div>
 
-  
+   <!-- Training Section -->
+  <section class="section" id="treinamentos">
+    <div class="container">
+      <div class="section-header">
+        <div class="safety-stripe-badge"></div>
+        <h2 class="section-title">Nossos Treinamentos</h2> <br>
 
-  <div class="floating-grid">
+        <h4 class="section-title2">Industria</h4>
+      </div>
+
+      
+      <div class="floating-grid">
   <div class="floating-item">
     <img src="./assets/images/loader.png" alt="Serviço 1">
     <p>NR-11 Operador de Pá Carregadeira</p>
@@ -83,38 +221,313 @@
     <img src="./assets/images/electricity safety.png" alt="Serviço 4">
     <p>NR-10 Segurança em Instalações e Serviços em Eletricidade</p>
   </div>
-</div>
-
-</section>
-
-<!--popup-->
-<section>
-
-<!-- Botão de abrir chat -->
-<div id="chatButton" class="chat-button">💬</div>
-
-<!-- Popup do chat -->
-<div id="chatPopup" class="chat-popup">
-  <div class="chat-header">
-    <h4>Assistente Virtual</h4>
-    <span id="closeChat">&times;</span>
+  <div class="floating-item">
+    <img src="./assets/images/electricity potency.png" alt="Serviço 1">
+    <p>NR-10 SEP - Sistema Elétrico de Potência</p>
   </div>
-
-  <div id="chatBody" class="chat-body"></div>
-
-  <!-- Campo de digitação (começa escondido) -->
-  <div class="chat-input-area chat-input" style="display: none;">
-    <input id="userInput" type="text" placeholder="Digite sua mensagem..." />
-    <button id="sendBtn">Enviar</button>
+  <div class="floating-item">
+    <img src="./assets/images/forklift.png" alt="Serviço 2">
+    <p>NR-11 Operador de Empilhadeira</p>
+  </div>
+  <div class="floating-item">
+    <img src="./assets/images/overhead crane.png" alt="Serviço 3">
+    <p>NR-11 Operador de Ponte Rolante</p>
+  </div>
+  <div class="floating-item">
+    <img src="./assets/images/electric tugboat.png" alt="Serviço 4">
+    <p>NR-11 Operador de Rebocador Elétrico;
+</p>
   </div>
 </div>
 
+       <!-- Construction Training -->
+      <div class="training-category">
+       <div class="section-header">
+        <h4 class="section-title2">Construção civil</h4>
+      </div>
+        
+      <div class="floating-grid">
+  <div class="floating-item">
+    <img src="./assets/images/loader.png" alt="Serviço 1">
+    <p>NR-11 Operador de Pá Carregadeira</p>
+  </div>
+  <div class="floating-item">
+    <img src="./assets/images/cipa.png" alt="Serviço 2">
+    <p>NR-05 Formação para Componentes da CIPA</p>
+  </div>
+  <div class="floating-item">
+    <img src="./assets/images/equipment.png" alt="Serviço 3">
+    <p>NR-06 Utilização Correta dos EPI’s e EPC’s</p>
+  </div>
+  <div class="floating-item">
+    <img src="./assets/images/electricity safety.png" alt="Serviço 4">
+    <p>NR-10 Segurança em Instalações e Serviços em Eletricidade</p>
+  </div>
+      </div>
 
-</section>
+       <!-- First Aid Training -->
+      <div class="training-category">
+       <div class="section-header">
+        <h4 class="section-title2">Primeiro socorros</h4>
+      </div>
+        
+      <div class="floating-grid">
+  <div class="floating-item">
+    <img src="./assets/images/loader.png" alt="Serviço 1">
+    <p>NR-11 Operador de Pá Carregadeira</p>
+  </div>
+  <div class="floating-item">
+    <img src="./assets/images/cipa.png" alt="Serviço 2">
+    <p>NR-05 Formação para Componentes da CIPA</p>
+  </div>
+  <div class="floating-item">
+    <img src="./assets/images/equipment.png" alt="Serviço 3">
+    <p>NR-06 Utilização Correta dos EPI’s e EPC’s</p>
+  </div>
+  <div class="floating-item">
+    <img src="./assets/images/electricity safety.png" alt="Serviço 4">
+    <p>NR-10 Segurança em Instalações e Serviços em Eletricidade</p>
+  </div>
+      </div>
+  </section>
 
+   <!-- Section Divider -->
+  <div class="section-divider"></div>
 
-    <!-- Bootstrap JavaScript -->
-     <script src="./assets/js/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+   <!-- Clients Section -->
+  <section class="section section-dark" id="clientes">
+    <div class="container">
+      <div class="section-header">
+        <div class="safety-stripe-badge"></div>
+        <h2 class="section-title">Nossos Clientes</h2>
+      </div>
+      <p class="section-subtitle">
+        Atendemos empresas de diversos setores, sempre com excelência e comprometimento com a segurança.
+      </p>
+      <div class="clients-content">
+        <p class="clients-text">
+          Trabalhamos com indústrias, construtoras, empresas de logística e diversos outros segmentos, 
+          oferecendo treinamentos personalizados de acordo com as necessidades específicas de cada cliente.
+        </p>
+      </div>
+    </div>
+  </section>
+
+   <!-- Section Divider -->
+  <div class="section-divider"></div>
+
+   <!-- Instructors Section -->
+  <section class="section" id="instrutores">
+    <div class="container">
+      <div class="section-header">
+        <div class="safety-stripe-badge"></div>
+        <h2 class="section-title">Nossos Profissionais</h2>
+      </div>
+
+      <div class="instructors-grid">
+        <div class="instructor-card">
+          <div class="instructor-avatar">👨‍🏫</div>
+          <h3 class="instructor-name">Daniel Fernandes</h3>
+          <p class="instructor-role">Instrutor de Treinamentos</p>
+          <ul class="instructor-credentials">
+            <li>Técnico em Segurança do Trabalho</li>
+            <li>Instrutor certificado em NRs</li>
+            <li>Especialista em treinamentos industriais</li>
+          </ul>
+        </div>
+
+        <div class="instructor-card">
+          <div class="instructor-avatar">👨‍💼</div>
+          <h3 class="instructor-name">Rudinei Ferreira Campos</h3>
+          <p class="instructor-role">Consultor Comercial</p>
+          <ul class="instructor-credentials">
+            <li>Especialista em consultoria empresarial</li>
+            <li>Gestão de projetos de segurança</li>
+            <li>Atendimento personalizado</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <!-- Section Divider -->
+  <div class="section-divider"></div>
+
+   <!-- Contact Section -->
+  <section class="section section-dark" id="contato">
+    <div class="container">
+      <div class="section-header">
+        <div class="safety-stripe-badge"></div>
+        <h2 class="section-title">Entre em Contato</h2>
+      </div>
+
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <h4>Telefone</h4>
+              <a href="tel:+5544998191489" class="contact-link">(44) 99819-1489</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <h4>E-mail</h4>
+              <a href="mailto:evolucaoconsultoriaetreinamentos@gmail.com" class="contact-link">
+                evolucaoconsultoriaetreinamentos@gmail.com
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">📱</div>
+            <div>
+              <h4>Instagram</h4>
+              <a href="https://instagram.com/evolucao_consultoriaet" target="_blank" rel="noopener noreferrer" class="contact-link">
+                @evolucao_consultoriaet
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Telefone</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Mensagem</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary btn-full">Enviar Mensagem</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+   <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3 class="footer-title">Evolução Consultoria</h3>
+          <p class="footer-text">
+            Treinamentos especializados em segurança do trabalho desde 2019.
+            Conhecimento que salva vidas.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h4 class="footer-subtitle">Links Rápidos</h4>
+          <ul class="footer-links">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#empresa">Empresa</a></li>
+            <li><a href="#treinamentos">Treinamentos</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4 class="footer-subtitle">Contato</h4>
+          <ul class="footer-links">
+            <li>(44) 99819-1489</li>
+            <li>evolucaoconsultoriaetreinamentos@gmail.com</li>
+            <li>@evolucao_consultoriaet</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Evolução Consultoria e Treinamentos. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">↑</button>
+
+  <!-- Chat button and popup (added as requested) -->
+  <div id="chatButton" class="chat-button">💬</div>
+  <div id="chatPopup" class="chat-popup" aria-hidden="true">
+    <div class="chat-header">
+      <h4>Assistente Virtual</h4>
+      <span id="closeChat">&times;</span>
+    </div>
+    <div id="chatBody" class="chat-body"></div>
+    <div class="chat-input-area chat-input" style="display: none;">
+      <input id="userInput" type="text" placeholder="Digite sua mensagem..." />
+      <button id="sendBtn">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    // Minimal chat button behavior (kept local and isolated)
+    (function(){
+      const chatButton = document.getElementById('chatButton');
+      const chatPopup = document.getElementById('chatPopup');
+      const closeChat = document.getElementById('closeChat');
+      const sendBtn = document.getElementById('sendBtn');
+      const chatBody = document.getElementById('chatBody');
+      const userInput = document.getElementById('userInput');
+      const inputArea = document.querySelector('.chat-input-area');
+      let stage = 0;
+
+      function createMessage(text, sender = 'bot'){
+        const msg = document.createElement('div');
+        msg.className = 'message ' + sender;
+        msg.textContent = text;
+        chatBody.appendChild(msg);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }
+
+      chatButton.addEventListener('click', ()=>{
+        chatPopup.style.display = 'flex';
+        chatButton.style.display = 'none';
+        inputArea.style.display = 'none';
+        if(stage === 0){
+          setTimeout(()=> createMessage('Olá! Tudo bem?'), 500);
+          setTimeout(()=> createMessage('Bem-vindo ao nosso atendimento virtual!'), 1500);
+          setTimeout(()=>{ createMessage('Antes de começarmos, qual é o seu nome?'); stage = 1; inputArea.style.display = 'flex'; }, 2500);
+        }
+      });
+
+      closeChat.addEventListener('click', ()=>{
+        chatPopup.style.display = 'none';
+        chatButton.style.display = 'flex';
+      });
+
+      sendBtn.addEventListener('click', ()=>{
+        const text = userInput.value.trim();
+        if(!text) return;
+        createMessage(text, 'user');
+        userInput.value = '';
+        inputArea.style.display = 'none';
+        if(stage === 1){
+          setTimeout(()=>{ createMessage('Prazer em te conhecer, ' + text + '!'); setTimeout(()=> createMessage('Como posso te ajudar hoje?'), 1000); }, 800);
+          stage = 2;
+        } else if(stage === 2){
+          setTimeout(()=> createMessage('Entendi! Me conte mais sobre isso.'), 800);
+        }
+      });
+
+      userInput.addEventListener('keypress', (e)=>{ if(e.key === 'Enter') sendBtn.click(); });
+    })();
+  </script>
+
+  <script src="script.js"></script>
 </body>
 </html>
