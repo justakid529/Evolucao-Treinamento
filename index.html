@@ -18,7 +18,7 @@
         <div class="logo">
 <a href="index.html" class="logo" >
   <img src="assets/images/logo.png" alt="Logo da Evolução Consultoria" class="logo-icon">
-  <span class="logo-text" style="color: white;">Evolução Consultoria</span>
+  <span class="logo-text">Evolução Consultoria</span>
 </a>
 </div>
 
@@ -486,13 +486,18 @@
       const inputArea = document.querySelector('.chat-input-area');
       let stage = 0;
 
-      function createMessage(text, sender = 'bot'){
-        const msg = document.createElement('div');
-        msg.className = 'message ' + sender;
-        msg.textContent = text;
-        chatBody.appendChild(msg);
-        chatBody.scrollTop = chatBody.scrollHeight;
-      }
+function createMessage(text, sender = 'bot', html = false){
+  const msg = document.createElement('div');
+  msg.className = 'message ' + sender;
+  if(html) {
+    msg.innerHTML = text; // permite HTML
+  } else {
+    msg.textContent = text;
+  }
+  chatBody.appendChild(msg);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
 
       chatButton.addEventListener('click', ()=>{
         chatPopup.style.display = 'flex';
@@ -501,7 +506,11 @@
         if(stage === 0){
           setTimeout(()=> createMessage('Olá! Tudo bem?'), 500);
           setTimeout(()=> createMessage('Bem-vindo ao nosso atendimento virtual!'), 1500);
-          setTimeout(()=>{ createMessage('Antes de começarmos, qual é o seu nome?'); stage = 1; inputArea.style.display = 'flex'; }, 2500);
+          setTimeout(()=>{ createMessage('Antes de começarmos, qual é o seu nome?'); 
+          stage = 1;
+           inputArea.style.display = 'flex';
+           
+           }, 2500);
         }
       });
 
@@ -515,12 +524,54 @@
         if(!text) return;
         createMessage(text, 'user');
         userInput.value = '';
-        inputArea.style.display = 'none';
+        
         if(stage === 1){
-          setTimeout(()=>{ createMessage('Prazer em te conhecer, ' + text + '!'); setTimeout(()=> createMessage('Como posso te ajudar hoje?'), 1000); }, 800);
-          stage = 2;
-        } else if(stage === 2){
-          setTimeout(()=> createMessage('Entendi! Me conte mais sobre isso.'), 800);
+          inputArea.style.display = 'none';
+setTimeout(() => {
+  createMessage('Prazer em te conhecer, ' + text + '!');
+  setTimeout(() => createMessage('Como posso te ajudar hoje?'), 1000);
+  setTimeout(() => {
+    createMessage(
+      '<a href="#contato"> <button id="btnSim" class="btnpopup">Virar um empregador/empregado(a)!</button></a><br>' +
+      '<button id="btnNao" class="btnpopup">Conhecer mais sobre a empresa!</button>',
+      'bot',
+      true
+    );
+
+    // Espera o HTML renderizar e adiciona os eventos aos botões
+    setTimeout(() => {
+      const btnSim = document.getElementById('btnSim');
+      const btnNao = document.getElementById('btnNao');
+
+      if (btnSim) {
+        btnSim.addEventListener('click', () => {
+          createMessage('Excelente escolha! Estou te levando pro contato para você começar o processo para você virar um empregador/empregado(a).', 'bot');
+          const target = document.querySelector('#contato');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+          // aqui você pode mudar o "stage" ou abrir outro fluxo se quiser
+        });
+      }
+
+      if (btnNao) {
+        btnNao.addEventListener('click', () => {
+          createMessage('Perfeito!  Vou te contar um pouco mais sobre a empresa.', 'bot');
+          // aqui também dá pra seguir outro caminho do atendimento
+          setTimeout(()=> createMessage(' A Evolução Consultoria e Treinamentos de Segurança do Trabalho foi fundada em 2019 com o propósito de levar às empresas soluções inovadoras em prevenção de acidentes e capacitação profissional. O principal foco da empresa é manter ambientes de trabalho seguros, reduzindo riscos, evitando prejuízos por fiscalizações ou ações trabalhistas, e promovendo a conscientização sobre as normas regulamentadoras (NRs).'), 1000)
+          setTimeout(()=> createMessage('Ela oferece treinamentos certificados, tanto industriais quanto de construção civil e primeiros socorros, realizados in company, ou seja, dentro das próprias empresas. Esses treinamentos abrangem desde NR-05 (CIPA) e NR-06 (EPI/EPC) até NR-35 (Trabalho em Altura), sempre com instrutores especializados.'), 2000)
+          setTimeout(()=> createMessage('Entre os benefícios que a Evolução proporciona estão: '),2500)
+          setTimeout(()=> createMessage('Redução de acidentes e custos; '),2900)
+          setTimeout(()=> createMessage('Melhoria da produtividade e da segurança; '),3100)
+          setTimeout(()=> createMessage('Cumprimento das exigências legais; '),3300)
+          
+        });
+      }
+    }, 100);
+  }, 1200);
+}, 800);
+stage = 2;
+          
         }
       });
 
