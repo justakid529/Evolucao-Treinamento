@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 			// Temporary UX: show simple success message and reset
 			alert('Mensagem enviada com sucesso! Entraremos em contato em breve.')
-			contactForm.reset()
+			
 		})
 	}
 
