@@ -165,7 +165,7 @@ contactForm.addEventListener("submit", (e) => {
   // Here you would typically send the data to a server
   // For now, we'll just show an alert and reset the form
   alert("Mensagem enviada com sucesso! Entraremos em contato em breve.")
-  contactForm.reset()
+  
 
   // In a real application, you would do something like:
   // fetch('/api/contact', {
