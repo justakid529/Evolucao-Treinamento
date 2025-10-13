@@ -154,7 +154,31 @@ backToTopBtn.addEventListener("click", () => {
   // Here you would typically send the data to a server
   // For now, we'll just show an alert and reset the form
  
-  
+// ===========================
+// Envio de formulário via AJAX com toast
+// ===========================
+const form = document.getElementById('contactForm');
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault(); // impede recarregar a página
+
+    const formData = new FormData(form);
+
+    fetch('./assets/php/salvar_contato.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert(data); // mostra o resultado do PHP
+        form.reset(); // limpa o formulário
+    })
+    .catch(error => {
+        alert('Erro ao enviar o formulário!');
+        console.error(error);
+    });
+});
+
 
   // In a real application, you would do something like:
   // fetch('/api/contact', {

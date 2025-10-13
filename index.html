@@ -391,12 +391,8 @@
             </div>
           </div>
         </div>
-
-<<<<<<< HEAD
-        <form class="contact-form" id="contactForm" method="post" action="./assets/php/salvar.php">
-=======
         <form class="contact-form" id="contactForm" method="post" action="./assets/php/salvar_contato.php">
->>>>>>> 1e81511e4f1d28a9b3bb97a95267591e81e70711
+
           <div class="form-group">
             <label for="name">Nome</label>
             <input type="text" id="name" name="name" required>
@@ -418,7 +414,14 @@
           </div>
 
           <button type="submit" class="btn-primary btn-full">Enviar Mensagem</button>
+
+          
+
         </form>
+        <div id="toastMensagem" class="toast" style="display:none;">
+  <span class="toast-icon">✔️</span>
+  <span class="toast-text"></span>
+</div>
       </div>
     </div>
   </section>
@@ -481,106 +484,121 @@
   <script>
     // Minimal chat button behavior (kept local and isolated)
     (function(){
-      const chatButton = document.getElementById('chatButton');
-      const chatPopup = document.getElementById('chatPopup');
-      const closeChat = document.getElementById('closeChat');
-      const sendBtn = document.getElementById('sendBtn');
-      const chatBody = document.getElementById('chatBody');
-      const userInput = document.getElementById('userInput');
-      const inputArea = document.querySelector('.chat-input-area');
-      let stage = 0;
+    const chatButton = document.getElementById('chatButton');
+    const chatPopup = document.getElementById('chatPopup');
+    const closeChat = document.getElementById('closeChat');
+    const sendBtn = document.getElementById('sendBtn');
+    const chatBody = document.getElementById('chatBody');
+    const userInput = document.getElementById('userInput');
+    const inputArea = document.querySelector('.chat-input-area');
+    let stage = 0;
 
-function createMessage(text, sender = 'bot', html = false){
-  const msg = document.createElement('div');
-  msg.className = 'message ' + sender;
-  if(html) {
-    msg.innerHTML = text; // permite HTML
-  } else {
-    msg.textContent = text;
-  }
-  chatBody.appendChild(msg);
-  chatBody.scrollTop = chatBody.scrollHeight;
-}
+    function createMessage(text, sender = 'bot', html = false){
+        const msg = document.createElement('div');
+        msg.className = 'message ' + sender;
+        if(html) {
+            msg.innerHTML = text;
+        } else {
+            msg.textContent = text;
+        }
+        chatBody.appendChild(msg);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
 
-
-      chatButton.addEventListener('click', ()=>{
+    chatButton.addEventListener('click', ()=>{
         chatPopup.style.display = 'flex';
         chatButton.style.display = 'none';
         inputArea.style.display = 'none';
         if(stage === 0){
-          setTimeout(()=> createMessage('Olá! Tudo bem?'), 500);
-          setTimeout(()=> createMessage('Bem-vindo ao nosso atendimento virtual!'), 1500);
-          setTimeout(()=>{ createMessage('Antes de começarmos, qual é o seu nome?'); 
-          stage = 1;
-           inputArea.style.display = 'flex';
-           
-           }, 2500);
+            setTimeout(()=> createMessage('Olá! Tudo bem?'), 500);
+            setTimeout(()=> createMessage('Bem-vindo ao nosso atendimento virtual!'), 1500);
+            setTimeout(()=>{ 
+                createMessage('Antes de começarmos, qual é o seu nome?'); 
+                stage = 1;
+                inputArea.style.display = 'flex';
+            }, 2500);
         }
-      });
+    });
 
-      closeChat.addEventListener('click', ()=>{
+    closeChat.addEventListener('click', ()=>{
         chatPopup.style.display = 'none';
         chatButton.style.display = 'flex';
-      });
+    });
 
-      sendBtn.addEventListener('click', ()=>{
+    sendBtn.addEventListener('click', ()=>{
         const text = userInput.value.trim();
         if(!text) return;
         createMessage(text, 'user');
         userInput.value = '';
         
         if(stage === 1){
-          inputArea.style.display = 'none';
-setTimeout(() => {
-  createMessage('Prazer em te conhecer, ' + text + '!');
-  setTimeout(() => createMessage('Como posso te ajudar hoje?'), 1000);
-  setTimeout(() => {
-    createMessage(
-      '<a href="#contato"> <button id="btnSim" class="btnpopup">Virar um empregador/empregado(a)!</button></a><br>' +
-      '<button id="btnNao" class="btnpopup">Conhecer mais sobre a empresa!</button>',
-      'bot',
-      true
-    );
+            inputArea.style.display = 'none';
+            
+            // Verificar se o nome é um usuário especial
+            const specialUsers = ['admin', 'gestor', 'joao', 'maria'];
+            if(specialUsers.includes(text.toLowerCase())) {
+                setTimeout(() => {
+                    createMessage('Olá ' + text + '! Detectei que você é um usuário especial.');
+                    setTimeout(() => {
+                        createMessage('Redirecionando para a área de login...', 'bot');
+                        // Redirecionar para login.php após 2 segundos
+                        setTimeout(() => {
+                            window.location.href = 'assets/php/login.php';
+                        }, 2000);
+                    }, 1000);
+                }, 800);
+                return; // Impede que o fluxo normal continue
+            }
+            
+            // Fluxo normal para outros nomes
+            setTimeout(() => {
+                createMessage('Prazer em te conhecer, ' + text + '!');
+                setTimeout(() => createMessage('Como posso te ajudar hoje?'), 1000);
+                setTimeout(() => {
+                    createMessage(
+                        '<a href="#contato"> <button id="btnSim" class="btnpopup">Virar um empregador/empregado(a)!</button></a><br>' +
+                        '<button id="btnNao" class="btnpopup">Conhecer mais sobre a empresa!</button>',
+                        'bot',
+                        true
+                    );
 
-    // Espera o HTML renderizar e adiciona os eventos aos botões
-    setTimeout(() => {
-      const btnSim = document.getElementById('btnSim');
-      const btnNao = document.getElementById('btnNao');
+                    // Espera o HTML renderizar e adiciona os eventos aos botões
+                    setTimeout(() => {
+                        const btnSim = document.getElementById('btnSim');
+                        const btnNao = document.getElementById('btnNao');
 
-      if (btnSim) {
-        btnSim.addEventListener('click', () => {
-          createMessage('Excelente escolha! Estou te levando pro contato para você começar o processo para você virar um empregador/empregado(a).', 'bot');
-          const target = document.querySelector('#contato');
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-          // aqui você pode mudar o "stage" ou abrir outro fluxo se quiser
-        });
-      }
+                        if (btnSim) {
+                            btnSim.addEventListener('click', () => {
+                                createMessage('Excelente escolha! Estou te levando pro contato para você começar o processo para você virar um empregador/empregado(a).', 'bot');
+                                const target = document.querySelector('#contato');
+                                if (target) {
+                                    target.scrollIntoView({ behavior: 'smooth' });
+                                }
+                            });
+                        }
 
-      if (btnNao) {
-        btnNao.addEventListener('click', () => {
-          createMessage('Perfeito!  Vou te contar um pouco mais sobre a empresa.', 'bot');
-          // aqui também dá pra seguir outro caminho do atendimento
-          setTimeout(()=> createMessage(' A Evolução Consultoria e Treinamentos de Segurança do Trabalho foi fundada em 2019 com o propósito de levar às empresas soluções inovadoras em prevenção de acidentes e capacitação profissional. O principal foco da empresa é manter ambientes de trabalho seguros, reduzindo riscos, evitando prejuízos por fiscalizações ou ações trabalhistas, e promovendo a conscientização sobre as normas regulamentadoras (NRs).'), 1000)
-          setTimeout(()=> createMessage('Ela oferece treinamentos certificados, tanto industriais quanto de construção civil e primeiros socorros, realizados in company, ou seja, dentro das próprias empresas. Esses treinamentos abrangem desde NR-05 (CIPA) e NR-06 (EPI/EPC) até NR-35 (Trabalho em Altura), sempre com instrutores especializados.'), 2000)
-          setTimeout(()=> createMessage('Entre os benefícios que a Evolução proporciona estão: '),2500)
-          setTimeout(()=> createMessage('Redução de acidentes e custos; '),2900)
-          setTimeout(()=> createMessage('Melhoria da produtividade e da segurança; '),3100)
-          setTimeout(()=> createMessage('Cumprimento das exigências legais; '),3300)
-          
-        });
-      }
-    }, 100);
-  }, 1200);
-}, 800);
-stage = 2;
-          
+                        if (btnNao) {
+                            btnNao.addEventListener('click', () => {
+                                createMessage('Perfeito! Vou te contar um pouco mais sobre a empresa.', 'bot');
+                                setTimeout(()=> createMessage(' A Evolução Consultoria e Treinamentos de Segurança do Trabalho foi fundada em 2019 com o propósito de levar às empresas soluções inovadoras em prevenção de acidentes e capacitação profissional. O principal foco da empresa é manter ambientes de trabalho seguros, reduzindo riscos, evitando prejuízos por fiscalizações ou ações trabalhistas, e promovendo a conscientização sobre as normas regulamentadoras (NRs).'), 1000);
+                                setTimeout(()=> createMessage('Ela oferece treinamentos certificados, tanto industriais quanto de construção civil e primeiros socorros, realizados in company, ou seja, dentro das próprias empresas. Esses treinamentos abrangem desde NR-05 (CIPA) e NR-06 (EPI/EPC) até NR-35 (Trabalho em Altura), sempre com instrutores especializados.'), 2000);
+                                setTimeout(()=> createMessage('Entre os benefícios que a Evolução proporciona estão: '),2500);
+                                setTimeout(()=> createMessage('Redução de acidentes e custos; '),2900);
+                                setTimeout(()=> createMessage('Melhoria da produtividade e da segurança; '),3100);
+                                setTimeout(()=> createMessage('Cumprimento das exigências legais; '),3300);
+                            });
+                        }
+                    }, 100);
+                }, 1200);
+            }, 800);
+            stage = 2;
         }
-      });
+    });
 
-      userInput.addEventListener('keypress', (e)=>{ if(e.key === 'Enter') sendBtn.click(); });
-    })();
+    userInput.addEventListener('keypress', (e)=>{ 
+        if(e.key === 'Enter') sendBtn.click(); 
+    });
+})();
   </script>
 
   <script src="./copies/script.js"></script>
