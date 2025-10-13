@@ -149,22 +149,11 @@ backToTopBtn.addEventListener("click", () => {
 })
 
 // Contact form handling
-const contactForm = document.getElementById("contactForm")
 
-contactForm.addEventListener("submit", (e) => {
-  e.preventDefault()
-
-  // Get form data
-  const formData = {
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    phone: document.getElementById("phone").value,
-    message: document.getElementById("message").value,
-  }
 
   // Here you would typically send the data to a server
   // For now, we'll just show an alert and reset the form
-  alert("Mensagem enviada com sucesso! Entraremos em contato em breve.")
+ 
   
 
   // In a real application, you would do something like:
@@ -173,7 +162,7 @@ contactForm.addEventListener("submit", (e) => {
   //   headers: { 'Content-Type': 'application/json' },
   //   body: JSON.stringify(formData)
   // })
-})
+
 
 // Smooth scroll for all anchor links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
