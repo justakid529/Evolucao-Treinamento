@@ -325,16 +325,7 @@
       </div>
 
       <div class="instructors-grid">
-        <div class="instructor-card">
-          <div class="instructor-avatar">👨‍🏫</div>
-          <h3 class="instructor-name">Daniel Fernandes</h3>
-          <p class="instructor-role">Instrutor de Treinamentos</p>
-          <ul class="instructor-credentials">
-            <li>Técnico em Segurança do Trabalho</li>
-            <li>Instrutor certificado em NRs</li>
-            <li>Especialista em treinamentos industriais</li>
-          </ul>
-        </div>
+        
 
         <div class="instructor-card">
           <div class="instructor-avatar">👨‍💼</div>
@@ -506,19 +497,28 @@
     }
 
     chatButton.addEventListener('click', ()=>{
-        chatPopup.style.display = 'flex';
-        chatButton.style.display = 'none';
+    chatPopup.style.display = 'flex';
+    chatButton.style.display = 'none';
+
+    // ✅ Mostrar o input novamente se o stage indicar que ele deveria estar ativo
+    if(stage === 1 || stage === 2){
+        inputArea.style.display = 'flex';
+    } else {
         inputArea.style.display = 'none';
-        if(stage === 0){
-            setTimeout(()=> createMessage('Olá! Tudo bem?'), 500);
-            setTimeout(()=> createMessage('Bem-vindo ao nosso atendimento virtual!'), 1500);
-            setTimeout(()=>{ 
-                createMessage('Antes de começarmos, qual é o seu nome?'); 
-                stage = 1;
-                inputArea.style.display = 'flex';
-            }, 2500);
-        }
-    });
+    }
+
+    // ✅ Apenas iniciar o chat se for a primeira vez
+    if(stage === 0){
+        setTimeout(()=> createMessage('Olá! Tudo bem?'), 500);
+        setTimeout(()=> createMessage('Bem-vindo ao nosso atendimento virtual!'), 1500);
+        setTimeout(()=>{ 
+            createMessage('Antes de começarmos, qual é o seu nome?'); 
+            stage = 1;
+            inputArea.style.display = 'flex';
+        }, 2500);
+    }
+});
+
 
     closeChat.addEventListener('click', ()=>{
         chatPopup.style.display = 'none';
