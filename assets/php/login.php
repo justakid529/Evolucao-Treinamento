@@ -1,6 +1,6 @@
 <?php
 session_start();
-$usuario = "nome do pai"; // usuário que o cliente vai usar
+$usuario = "Rudinei"; // usuário que o cliente vai usar
 $senha = "1105"; // senha que o cliente vai usar
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
